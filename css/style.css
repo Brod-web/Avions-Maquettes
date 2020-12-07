@@ -1,0 +1,624 @@
+/* layout */
+.fond-dashboard{
+    background-image: url(../assets/img/fond2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 680px;
+
+}
+
+.fond-grey{
+    background: rgba(148, 156, 156, 0.4);
+}
+
+.siteName{
+    font-family: 'Leckerli One', cursive;
+    font-size: 35px;
+}
+
+.white{
+    color: white;
+}
+
+.orange{
+    color: #ff6900;
+}
+
+.black{
+    color: black;
+}
+ 
+li{
+    list-style-type: none;
+}
+
+.card-img{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+/* GLOBAL */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
+}
+
+iframe {
+    max-width: 100%;
+    display: block;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #8ebdd6;
+}
+
+figure {
+    margin: 0;
+}
+
+/* TEXTES */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -1px;
+    color: #ffffff;
+}
+
+h1{
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px 20px 1px 20px;
+}
+
+body h5{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding-top: 5px;
+}
+
+body p{
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* HEADER */
+
+.entete{
+    background-color: #093347;
+    min-height: 70px;
+    border-bottom: 2px solid #ffffff;
+    position: relative;
+}
+
+.fond-reaction{
+    background-image: url(../assets/img/fond-reaction.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 340px;
+}
+
+.fond-ww2{
+    background-image: url(../assets/img/fond-ww2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 340px;
+}
+
+.fond-color1{
+    background-color: rgba(9, 51, 71, 0.4);
+    min-height: 340px;
+}
+
+.fond-color2{
+    background-color: rgba(244, 141, 74, 0.4);
+    min-height: 340px;
+}
+
+.fond-color3{
+    /*background-color: #093347;*/
+    background-color: rgba(13, 80, 80, 0.4);
+    /*background-color:#f7f7f7;*/
+    border-top: 2px solid #ffffff;
+}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-around{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.flex-between{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.flex-end{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.flex-center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logo{
+    padding-top: 8px;
+    width: 270px;
+}
+
+.logo strong{
+    font-size: 25px;
+    font-weight: 700;
+    color: #ff6900;
+}
+
+.logo span{
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 30px;
+    color: #ff6900;
+}
+
+.logo i{
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.collec-logo{
+    border: 2px solid #ffffff;
+    margin-top: 5px;
+}
+
+.collec-logo:hover{
+    border: 2px solid rgba(244, 141, 74, 1);
+}
+
+.titre{
+    position: absolute;
+    top: 360px;
+}
+
+.bouton{
+    width: 130px;
+    height: 50px;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    margin-top: 10px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.bouton h4{
+    margin: 4px;
+}
+
+.bouton:hover{
+    border: 2px solid #ff6900;
+    background-color: #1f4558;
+}
+
+.on{
+    /*color: #ff6900;*/
+    border: 2px solid #ff6900;
+}
+
+.titre{
+    text-align: center;
+    color: #ffffff;
+}
+
+.ligne{
+    max-width: 480px;
+    min-height: 25px;
+    border-bottom: 1px solid #5a8ca7;
+    margin: 0 auto;
+}
+
+.legende{
+    max-width: 500px;
+    min-height: 10px;
+    color: #b4d1e1;
+    text-align: center;
+    text-overflow: inherit;
+    margin: 30px auto 0 auto;
+}
+
+#menu ul{
+    padding-top: 15px;
+    height: 35px;
+}
+
+#menu li{
+    width: 100px;
+    height: 35px;
+    background-color: #093347;
+    border-radius: 3px;
+    padding-top: 4px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+#menu li:hover{
+    background-color: #1f4558;
+}
+
+#menu-dashboard div{
+    padding-top: 15px;
+    height: 35px;
+}
+
+#menu-mobile {
+    display: none;
+}
+
+/* MAIN */
+
+.fascicule{
+    width: 185px;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+    float: right;
+    transform: translateY(15px);
+}
+
+.fascicule:hover{
+    border: 4px solid #ff6900;
+}
+
+.fond-ciel{
+    background-image: url(..assets/img/fond-ciel.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 635px;
+
+}
+
+.fond-color4{
+    background-color: rgba(60, 120, 148, 0.65);
+    min-height: 635px;
+}
+
+.btn-style{
+    width: 500px;
+    height: 50px;
+    border: 2px solid;
+    border-radius: 25px;
+    margin: 10px auto 0 auto;
+    padding-top: 5px;
+    text-align: center;
+}
+
+.btn-style2{
+    width: 500px;
+    height: 140px;
+    border: 2px solid;
+    border-radius: 25px;
+    margin: 10px auto 0 auto;
+    padding-top: 55px;
+    text-align: center;
+}
+
+.contact .bouton{
+    padding-top: 4px;
+    margin-top: 10px;
+}
+
+button{
+    background-color: #213139;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+#savoir q{
+    color: #ff6900;
+}
+
+#savoir q>span{
+    font-family: 'Patrick Hand SC', cursive;
+    /*font-size: 30px;*/
+}
+
+#savoir h2{
+    margin-top: 40px;
+}
+
+#savoir h3{
+    margin-top: 20px;
+    text-align: justify;
+}
+
+/* ANNONCE */
+
+.gabarit{
+    min-width: 150px;
+    height: 150px;
+    border: 2px solid white;
+}
+
+
+/* AVION-IMG */
+
+#avion-img ul
+{
+    width: 240px;
+    height: 463px;
+    padding-left: 0;
+    padding-top: 40px;
+}
+
+#avion-img ul li
+{
+    float: left;
+    width: 240px;
+    height: 463px;
+    overflow: hidden;
+    position: relative;
+}
+
+.images{
+    position: absolute;
+    left: 0px;
+    width: 240px;
+    height: 463px;
+    cursor: pointer;
+}
+
+.n1-5{
+    background: url(../img/1-5.jpg) no-repeat;
+}
+
+#part2 div
+{
+    background-position: -240px 0;
+}
+#part3 div
+{
+    background-position: -480px 0;
+}
+#part4 div
+{
+    background-position: -720px 0;
+}
+#part5 div
+{
+    background-position: -960px 0;
+}
+
+/* AVION-DIM */
+
+.avion-dim
+{
+    width: 280px;
+    height: 463px;
+    margin-top: 40px;
+    background-color: #093347;
+    opacity: 0.8;
+    position: relative;
+}
+
+.silouhette{
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ff6900;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-left: 2px solid #ff6900;
+}
+
+.name{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.flag-pos{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.flag{
+    display: block;
+    width: 50px;
+    margin-bottom: 4px;
+    border: 1px solid white;
+}
+
+.bulle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ff6900;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.b-env{
+    position: absolute;
+    top: 280px;
+    right: 50px;
+}
+
+.b-lg{
+    position: absolute;
+    top: 60px;
+    right: 214px;
+}
+
+.b-surf{
+    position: absolute;
+    top: 180px;
+    right: 113px;
+}
+
+/* AVION-CAR */
+
+.avion-car
+{
+    width: 520px;
+    height: 463px;
+    margin-top: 40px;
+    background-color: #093347;
+    opacity: 0.8;
+    position: relative;
+}
+
+.avion-car .progress{
+    height: 20px;
+    margin: 10px 180px 0px 20px;
+}
+
+.avion-car .progress h5{
+    text-align: left;
+    margin-left: 25px;
+    margin-top: 5px;
+}
+
+.rect{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    z-index: -1;
+    border-radius: 5px;
+    background-color: #ff6900;
+    color: white;
+    font-size: 20px;
+    text-align: right;
+    padding-top: 4px;
+    padding-right: 6px;
+}
+
+.rect h4{
+    margin: 3px;
+}
+
+.flex-bulle{
+    position: absolute;
+    top: -50px;
+    right: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.b1,.b2,.b3,.b4,.b5{
+    align-items: center;
+    position: relative;
+}
+
+/* AVION-LIST */
+
+.avion-list{
+    position: relative;
+    padding-top: 40px;
+}
+
+.check{
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 5px;
+    width: 20%;
+    border: 2px solid rgba(13, 80, 80, 0.4);
+}
+
+
+
+/* AVION-COLLECTION */
+
+.collec{
+    list-style-type: none;
+    padding-top: 40px;
+}
+.collec li{
+    height: 30px;
+    background-color: #093347;
+    border-radius: 3px;
+    padding-left: 10px;
+    margin-bottom: 4px;
+}
+
+.collec h3{
+    padding-top: 5px;
+}
+
+.avion-choice{
+    max-width: 900px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/* FOOTER */
+
+.fond-footer{
+    background-color: rgba(13, 80, 80, 0.4);
+    /*background-color:#f7f7f7;*/
+    min-height: 50px;
+    /*border-top: 2px solid #ffffff;*/
+
+}
+
+.fond-footer p{
+    color: #ff6900;
+    text-align: right;
+    padding-top: 15px;
+}
+
