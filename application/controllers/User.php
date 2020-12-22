@@ -11,28 +11,38 @@ class User extends CI_Controller
 		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
 		//$this->output->enable_profiler(TRUE);
 	}
+
+	/* TABLEAU DE BORD USER  */
 	
-	function index() //Tableau de bord membre
+	function index()
 	{
 		$userId = $this->session->id;
-		$this->load->model('Bourse_Model');
+		$this->session->unset_userdata('photo');
 
+		$this->load->model('Bourse_Model');
 		$data['user'] = $this->User_Model->getUser($userId);
 		$data['collection'] = $this->User_Model->getCollection($userId);
-		$data['jet_data'] = $this->Jet_Model->getJetCollection();
-		$data['jet_builders'] = $this->Jet_Model->getJetBuilders();
+		$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
 		$data['annonces'] = $this->Bourse_Model->getUserAds($userId);
+		$data['favorites'] = $this->Bourse_Model->getFavorisAds();
+		$data['members'] = $this->User_Model->getUsers();
 
-		//Ajout model_name + builder_name dans $data['annonces']
+		// Ajout model_name + builder_name dans $data['annonces']
 		foreach($data['annonces'] as $annonce){
 			foreach($data['jet_data'] as $jet){
 				if($annonce->model_id == $jet->id){
 					$annonce->model_name = $jet->model;
-					foreach($data['jet_builders'] as $builder){
-						if($jet->builder_id == $builder->id){
-							$annonce->builder_name = $builder->name;
-						}
-					}
+					$annonce->builder_name = $jet->builder_name;
+				}
+			}
+		}
+
+		// Ajout model_name + builder_name dans $data['favorites']
+		foreach($data['favorites'] as $favorite){
+			foreach($data['jet_data'] as $jet){
+				if($favorite->model_id == $jet->id){
+					$favorite->model_name = $jet->model;
+					$favorite->builder_name = $jet->builder_name;
 				}
 			}
 		}
@@ -40,8 +50,10 @@ class User extends CI_Controller
 		$this->layout->set_title('Dashboard');
 		$this->layout->view('user/dashboard',$data);
 	}
+
+	/* MODIF COORDONNEES USER, CHOIX COMPTE(PRIVE/PUBLIC) ET COLLECTIONS DETENUES  */
 	
-	function mod_infos() //Modif coordonnées membre, choix compte & collections
+	function mod_infos()
 	{
 		$userId = $this->session->id;
 		$data['user'] = $this->User_Model->getUser($userId);
@@ -94,7 +106,7 @@ class User extends CI_Controller
 		}
 	}
 
-	/* COLLECTIONS AVIONS A REACTION + SECONDE GUERRE MONDIALE  */
+	/* GESTION COLLECTIONS AVIONS A REACTION + SECONDE GUERRE MONDIALE  */
 
 	function mod_collection($collectionName) //Choix modeles détenus dans une collection
 	{
@@ -200,59 +212,57 @@ class User extends CI_Controller
 		}
 	}
 
-	/* ANNONCES USER  */
+	/* AFFICHAGE COLLECTIONS AVIONS A REACTION + SECONDE GUERRE MONDIALE  */
 
-	function add_annonce() //Ajout annonce user
+	function aff_collection($collectionName) //Affiche modeles détenus dans une collection
 	{
 		$userId = $this->session->id;
+		$data['collection'] = $this->User_Model->getCollection($userId);
 
+		$have = ($collectionName == "jet") ? 'jet_have' : 'ww2_have';
+		$data['have'] = str_split($data['collection']->$have);
+		
+		$this->layout->set_title('Jet');
+		$this->layout->view('user/'.$collectionName.'_collection',$data);
+	}
+
+	/* ANNONCES USER  */
+
+	function add_annonce() // Ajout annonce user
+	{
+		$userId = $this->session->id;
 		$data['user'] = $this->User_Model->getUser($userId);
-		$data['jet_data'] = $this->Jet_Model->getJetCollection();
-		$data['jet_builders'] = $this->Jet_Model->getJetBuilders();
-
-		//Ajout builder name dans $data['jet_data']
-		foreach($data['jet_data'] as $jet){
-			foreach($data['jet_builders'] as $builder){
-				if($jet->builder_id == $builder->id){
-					$jet->builder_name = $builder->name;
-				}
-			}
-		}
-
+		$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
+		
 		if ($this->form_validation->run() == FALSE){
 			$this->layout->set_title('Dashboard');
 			$this->layout->view("user/add_annonce",$data);
-
 			$error = $this->session->set_flashdata('error', validation_errors());
 			echo $error;
-		} else {
-			//$pays = $data['user']->pays;
-			//$dept = substr($data['user']->CP,0,2);
-			//$ville = $data['user']->ville;
 
+		} else {
+			
 			$data = array(
 				'user_id' => $userId,
 				'deal' => $this->input->post('deal'),
-				'collection' => ($this->input->post('jet') == 'on') ? "jet" : "ww2",
+				'collection' => $this->input->post('type'),
 				'model_id' => $this->input->post('model'),
 				'price' => $this->input->post('price'),
 				'text' => $this->input->post('text'),
+				'dept' => substr($data['user']->CP,0,2),
+				'location' => $data['user']->ville.','.$data['user']->pays,
 				'photo' => (isset($this->session->photo)) ? $this->session->photo : ''
 			);
 			$this->MY_Model->add('annonces', $data);
-
-			$array_items = array('photo');
-			$this->session->unset_userdata($array_items);
 			redirect('user/add_annonce');
 		}
 	}
 
-	function mod_annonce($adId) //Modif annonce user
+	function mod_annonce($adId) // Modif annonce user
 	{
 		$this->load->model('Bourse_Model');
 
-		$data['jet_data'] = $this->Jet_Model->getJetCollection();
-		$data['jet_builders'] = $this->Jet_Model->getJetBuilders();
+		$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
 		$data['annonce'] = $this->Bourse_Model->getUserAd($adId);
 
 		//Ajout model_name + builder_name dans $data['annonces']
@@ -260,11 +270,7 @@ class User extends CI_Controller
 			foreach($data['jet_data'] as $jet){
 				if($annonce->model_id == $jet->id){
 					$annonce->model_name = $jet->model;
-					foreach($data['jet_builders'] as $builder){
-						if($jet->builder_id == $builder->id){
-							$annonce->builder_name = $builder->name;
-						}
-					}
+					$annonce->builder_name = $jet->builder_name;
 				}
 			}
 		
@@ -282,11 +288,19 @@ class User extends CI_Controller
 				'photo' => (isset($this->session->photo)) ? $this->session->photo : $this->input->post('photo')
 			);
 			$this->MY_Model->modif('annonces', $adId, $data);
-
-			$array_items = array('photo');
-			$this->session->unset_userdata($array_items);
 			redirect('user');
 		}
+	}
+
+	function del_photo($adId) // Delete photo dans mod_annonce user
+	{
+		$data = array(
+			'photo' => ''
+		);
+		$this->MY_Model->modif('annonces', $adId, $data);
+
+		$referred_from = $this->session->userdata('referred_from');
+        redirect($referred_from, 'refresh');
 	}
 
 	function del_annonce($adId) //Delete annonce user

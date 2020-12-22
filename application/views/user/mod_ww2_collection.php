@@ -1,3 +1,4 @@
+<?if(isset($this->session->id)){?>
 <div class="fond-color3">
     <div class="container" style="min-height: 535px;">
     
@@ -82,6 +83,7 @@
     </div>
 </div>
 </form>
+<?}?>
 
         
 

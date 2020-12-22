@@ -14,12 +14,6 @@ class Login extends CI_Controller {
 	{
 		$this->layout->set_title('accueil');
 		$this->layout->view('front/login');
-		//$this->layout->view('front/signin');
-		//$this->layout->view('front/change_pwd');
-		//$this->layout->view('user/member_mod');
-		//$this->layout->view('user/dashboard');
-		//$this->layout->view('user/member_collection');
-		//$this->layout->view('jet/fiches');
 	}
 
 	public function validation(){
@@ -95,10 +89,16 @@ class Login extends CI_Controller {
 	}
 
 	public function deconnexion(){
-		$array_items = array('id', 'pseudo', 'email');
+		$array_items = array('id','pseudo','email','loc_site','loc_ebay','dept','dist','model','req','req_perso','data');
 		$this->session->unset_userdata($array_items);
 		session_destroy();
 		redirect('login');
+	}
+
+	public function to_be_logged()
+	{
+		$this->layout->set_title('accueil');
+		$this->layout->view('front/to_be_logged');
 	}
 
 	public function userChangePwd(){

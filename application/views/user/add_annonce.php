@@ -1,11 +1,12 @@
+<?if(isset($this->session->id)){?>
 <div class="fond-color3" style="min-height: 535px;">
     <div class="container">
-        <h3 class="orange text-center">Publiez votre annonce :</h3>
-        <div class="mt-3">
+        <h3 class="orange text-center mt-5 mb-3">Publiez votre annonce :</h3>
+        <div>
             <div class="row">
                 <div class="text-center">
                     <?if(isset($this->session->photo)){?>
-                        <div class="mx-3 gabarit">
+                        <div class="mx-3">
                             <img src="<? echo base_url().'uploads/'.$this->session->photo?>" width="150px" alt="photo">
                         </div>
                     <?} else {?>
@@ -21,11 +22,12 @@
                 <div class="col-md-9 col-sm-9 col-12">
                     <?=form_open('user/add_annonce')?>
                     <? $dept = substr($user->CP,0,2) ?>
-                    <input class="form-control mb-1" type="text" placeholder="votre localisation : <?=$user->pays?> | Dépt. : <?=$dept?> | Ville : <?=$user->ville?>" readonly>
+                    <input class="form-control mb-1" type="text" placeholder="votre localisation : département <?=$dept?> | <?=$user->ville?>,<?=$user->pays?>" readonly>
                     <div class="d-flex">
                         <select class="custom-select col-3" name="deal">
                             <option value="A vendre" selected>A vendre</option>
                             <option value="Recherche">Recherche</option>
+                            <option value="Echange">Echange</option>
                         </select>
                         <div class="ml-3">
                             <div class="form-check">
@@ -42,15 +44,15 @@
                     <div class="d-flex my-1">
                         <select class="custom-select col-9" id="selectCollection" name="model">
                             <option value="0">Choix du modèle</option>
-                            <?foreach($jet_data as $jet){ //Création liste modeles?>
+                            <?foreach($jet_data as $jet){ // Création liste modeles avec builder?>
                                 <option class="jet" style="display: none;" value="<?=sprintf("%02d", $jet->id)?>"><?=sprintf("%02d", $jet->id)?> _ <?=$jet->builder_name?> <?=$jet->model?></option>
                             <?}?>
                         </select>
                         <input class="form-control col-3" type="text" placeholder="prix (€)" name="price">
                     </div>
-                    <input class="form-control my-1" type="text" placeholder="texte de l'annonce" name="text">
+                    <input class="form-control my-1" type="text" placeholder="Votre message" name="text">
                     
-                    <div class="d-flex justify-content-end mt-2">
+                    <div class="d-flex justify-content-end my-2">
                         <input class="btn btn-info" type="submit" name="submit" value="Enregistrer"/>
                         <a class="btn btn-success ml-1" href="<? echo base_url('user')?>">Retour</a>
                     </div>
@@ -61,26 +63,9 @@
                 
             </div>  
         </div>
-<!--
-        <h3 class="orange text-center">Aperçu :</h3>
-        <div class="mt-3">
-            <div class="row">
-                <div class="mx-3 mb-3">
-                    <img src="<? echo base_url().'uploads/photo1.jpg'?>" width="150px" alt="photo">
-                </div>
-                <div class="col-md-9 col-sm-9 col-12">
-                    <div class="d-flex mb-1">
-                        <input class="form-control col-9" type="text" placeholder="titre" readonly>
-                        <input class="form-control col-3" type="text" placeholder="A vendre" readonly>
-                    </div>
-                    <input class="form-control mb-1" type="text" placeholder="texte" readonly>
-                    <a class="btn btn-info" href="<? echo base_url('user/mod_annonce')?>">Modifier</a>
-                    <a class="btn btn-danger" href="<? echo base_url('user/del_annonce')?>">Supprimer</a>
-                </div>
-            </div>
-        </div>-->
     </div>
 </div>
+<?}?>
 
 <script>
 

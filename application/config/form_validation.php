@@ -142,6 +142,16 @@ $config = array(
     // ANNONCE USER
     'user/add_annonce' => array(
         array(
+            'field' => 'type',
+            'label' => 'Type',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'model',
+            'label' => 'Model',
+            'rules' => 'greater_than[0],required'
+        ),
+        array(
             'field' => 'price',
             'label' => 'Price',
             'rules' => 'trim|required|numeric'
@@ -157,12 +167,28 @@ $config = array(
         array(
             'field' => 'price',
             'label' => 'Price',
-            'rules' => 'trim|numeric'
+            'rules' => 'trim|required|numeric'
         ),
         array(
             'field' => 'text',
             'label' => 'Text',
             'rules' => 'trim'
+        )
+    ),
+
+    'bourse/search_site' => array(
+        array(
+            'field' => 'dept',
+            'label' => 'Dept',
+            'rules' => 'trim|numeric'
+        )
+    ),
+
+    'bourse/search_ebay' => array(
+        array(
+            'field' => 'dist',
+            'label' => 'Dist',
+            'rules' => 'trim|numeric'
         )
     ),
 );

@@ -1,3 +1,4 @@
+<?if(isset($this->session->id)){?>
 <?=form_open('user/mod_infos')?>
 <div class="fond-reaction">
     <div class="fond-color1">
@@ -169,3 +170,4 @@
     </div>
 </div>
 </form>
+<?}?>

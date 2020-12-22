@@ -10,9 +10,9 @@
     <div class="nav-item dropdown">
         <button class="btn text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 160px;"><i class="fas fa-bars"></i></button>
         <div class="dropdown-menu text-center">
-            <a class="dropdown-item" href="<? echo base_url('login')?>">Accueil</a>
-            <a class="dropdown-item" href="<? echo base_url('signin')?>">S'inscrire</a>
-            <a class="dropdown-item" href="<? echo base_url('login')?>#savoir">En savoir +</a>
+            <div><a class="dropdown-item" href="<? echo base_url('login')?>">Accueil</a></div>
+            <div><a class="dropdown-item" href="<? echo base_url('signin')?>">S'inscrire</a></div>
+            <div><a class="dropdown-item" href="<? echo base_url('login')?>#savoir">En savoir +</a></div>
         </div>
     </div>
 </nav>

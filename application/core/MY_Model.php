@@ -10,11 +10,6 @@ class MY_Model extends CI_Model {
         echo "</pre>";        
     }
 
-    /*public function store($field)
-    {
-        return array($field => $this->input->post($field));
-    }*/
-
     public function add($table,$data)
     {
         return $this->db->insert($table, $data);

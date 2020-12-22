@@ -1,11 +1,54 @@
 <?
 class Jet_Model extends MY_Model {
 
+    /* GENERAL */
+
     public function getJetCollection()
 	{
         $query = $this->db->query('SELECT * FROM jet_fighters');
         return $query->result();
     }
+
+    public function getJetsAndBuilders()
+	{
+        $query = $this->db->query
+        ('SELECT jet_fighters.id, model, builder_id, builders.name as builder_name
+        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id
+        ORDER BY jet_fighters.id ASC');
+        return $query->result();
+    }
+
+    public function getJetsList()
+	{
+        $query = $this->db->query
+        ('SELECT jet_fighters.id, copy_id, model, carrier_start, carrier_end, built_nb, builder_id, builders.name as builder_name
+        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id
+        ORDER BY jet_fighters.id ASC');
+        return $query->result();
+    }
+
+    public function getJetsListByBuilder()
+	{
+        $query = $this->db->query
+        ('SELECT jet_fighters.id, copy_id, model, carrier_start, carrier_end, built_nb, builder_id, builders.name as builder_name
+        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id AND copy_id IS NULL
+        ORDER BY builder_name ASC');
+        return $query->result();
+    }
+
+    public function getBuilders()
+	{
+        $query = $this->db->query('SELECT * FROM builders');
+        return $query->result();
+    }
+
+    public function getCountries()
+	{
+        $query = $this->db->query('SELECT * FROM countries');
+        return $query->result();
+    }
+
+    /* CARD */
 
     public function getModel($id)
 	{
@@ -15,94 +58,41 @@ class Jet_Model extends MY_Model {
         return $query->row();
     }
 
-    public function getJetBuilders()
+    public function getBuilder($builderId)
 	{
-        $query = $this->db->query('SELECT * FROM builders');
-        return $query->result();
+        $this->db->from('builders');
+        $this->db->where('id', $builderId);
+        $query = $this->db->get();
+        return $query->row();
     }
 
-    public function getJetBuilder($id)
+    public function getPhoto($id)
 	{
-        $this->db->from('jet_fighters');
+        $this->db->from('photos');
         $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row();
     }
 
-    public function validUser($userId,$hash)
+    /* SORT BY */
+
+    public function getFirst_items($field)
 	{
-        $auth = array('id' => $userId, 'password' => $hash);
-        
-        $this->db->from('user');
-        $this->db->where($auth);
-        $query = $this->db->get();
-        $user = $query->row();
-
-        if($query->num_rows() != 0){
-            // user/pwd valide
-            return TRUE;
-        } else {
-            // user/pwd non valide
-            return FALSE;
-        }
+        $query = $this->db->query
+        ("SELECT jet_fighters.id, copy_id, model, builder_id, pilot, engine, $field, builders.name as builder_name
+        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id AND copy_id IS NULL
+        ORDER BY $field DESC");
+        /*LIMIT 6"); Dans le cas ou on affichait seulement premiers résultats */
+        return $query->result();
     }
-    
-    public function checkUserExist($pseudo,$pwd)
-	{   
-        $this->db->from('user');
-        $this->db->where('pseudo', $pseudo);
-        $query = $this->db->get();
-        $user = $query->row();
 
-        if($query->num_rows() != 0 && password_verify($pwd, $user->password)){
-            // user existant
-            return $user;
-        } else {
-            // user à créer
-            return FALSE;
-        } 
-    }
-    
-    public function setSession($userId)
+    /*public function getLast_items($field) // Plus utilisé
 	{
-		$user = $this->User_Model->getUser($userId);
-		$this->session->email = $user->email;
-		$this->session->pseudo = $user->pseudo;
-		$this->session->id = $user->id;
-    }
-
-    public function verifPseudoMail($pseudo, $email){
-        $auth = array('pseudo' => $pseudo, 'email' => $email);
-        
-        $this->db->from('user');
-        $this->db->where($auth);
-        $query = $this->db->get();
-        $user = $query->row();
-
-        if($query->num_rows() != 0){
-            // user/pwd valide
-            return $user;
-        } else {
-            // user/pwd non valide
-            return FALSE;
-        }
-    }
-
-    /* Fonction génériques ajoutées à MY_Model
-    public function addUser($data)
-    {
-        return $this->db->insert('user', $data);
-    }
-
-    public function modifUser($userId, $data)
-    {
-        $this->db->where('id', $userId);
-        return $this->db->update('user', $data);
-    }
-
-    public function delUser($userId)
-    {
-        return $this->db->delete('user', $userId);
-    }
-    */
+        $query = $this->db->query
+        ("SELECT jet_fighters.id, copy_id, model, builder_id, $field, builders.name as builder_name
+        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id AND copy_id IS NULL
+        ORDER BY $field ASC
+        LIMIT 6");
+        return $query->result();
+    }*/
 }

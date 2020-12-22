@@ -1,7 +1,7 @@
 <div class="fond-reaction">
     <div class="fond-color1">
         <div class="container d-flex justify-content-end">
-            <div class="col-lg-4 pt-3 mr-5">
+            <div class="col-md-4 col-sm-7 col-8 pt-3 mr-5">
                 <?=form_open('signin/inscription')?>     
                     <div class="form-group">
                         <h3 class="text-center mb-3 orange">Merci de compléter :</h3>
@@ -23,10 +23,10 @@
     <div class="container">
         <h2>2 univers et 1 lieu d'échange entre collectionneurs.</h2>
         <div class="d-flex justify-content-end">
-            <div class="col-md-5 mt-4">
+            <div class="col-md-5 col-sm-12 col-12 mt-4">
                 <!-- Message accueil -->
                 <div class="alert alert-info text-center" role="alert">
-                    <?$msg = "Tapez vos pseudo et email, ainsi qu'un nouveau mot de passe.";
+                    <?$msg = "Entrez vos pseudo et email, ainsi qu'un nouveau mot de passe.";
                     echo $msg;?>
                 </div>
                 <!-- Affichage erreurs formulaire -->
@@ -44,9 +44,9 @@
                     </div>
                 <?}?>
             </div>
-            <div class="col-md-7 text-center">
-                <h3 class="mt-4 orange">Passionné(e) par les avions de combat et les maquettes ... Bienvenue.</h3>
-                <h4 class="mt-4">Continuez de suivre vos propres collections et d'échangez avec d'autres membres.<br>L'acces aux collections reste possible sans identification.</h4>
+            <div class="col-md-7 col-sm-12 col-12 text-center">
+                <h3 class="mt-4 orange">Passionné(e) par les avions de combat et les maquettes ...</h3>
+                <h3 class="mt-2">Suivez vos collections et échangez avec d'autres membres.<br>L'acces aux collections reste possible sans identification.</h3>
             </div>
     </div>
 </div>

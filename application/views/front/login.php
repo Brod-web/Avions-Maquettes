@@ -4,13 +4,13 @@
             <h2>2 univers et 1 lieu d'échange entre collectionneurs.<br></h2>
                     
             <div class="fascicule">
-                <a href="#"><img src="<? echo base_url().'assets/img/bourse.jpg'?>" alt="bourse des collectionneurs"></a>
+                <a href="<? echo base_url('login/to_be_logged')?>"><img src="<? echo base_url().'assets/img/bourse.jpg'?>" alt="bourse des collectionneurs"></a>
             </div>
             <div class="fascicule mr-3">
                 <a href="#"></a><img src="<? echo base_url().'assets/img/poster-ww2.jpg'?>" alt="avions de la seconde guerre mondiale"></a>
             </div>
             <div class="fascicule mr-3">
-                <a href="<? echo base_url('jet')?>"><img src="<? echo base_url().'assets/img/poster-jet.jpg'?>" alt="avions a reaction"></a>
+                <a href="<? echo base_url('jet/list/model')?>"><img src="<? echo base_url().'assets/img/poster-jet.jpg'?>" alt="avions a reaction"></a>
             </div>
         </div>
     </div>
