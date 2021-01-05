@@ -71,7 +71,11 @@
                 <?// test > collection inactive
                 } else {?>
                     <div>
-                        <h3 class="orange mb-2">Je ne posséde aucune maquette liée à cette collection</h3>
+                        <h3 class="orange">Je ne posséde aucune maquette liée à cette collection</h3>
+                        <h3>Si l'information est erronée, merci de mettre à jour votre compte</h3>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <a class="btn btn-success" href="<? echo base_url('user')?>">Retour</a>
                     </div>
                 <?}?>
             </div>

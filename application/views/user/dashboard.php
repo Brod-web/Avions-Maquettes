@@ -2,13 +2,13 @@
 <div class="fond-color3">
     <div class="container">
 
-        <div class="d-flex justify-content-center mt-4">
-            <img src="<? echo base_url().'assets/img/logo-user.jpg'?>" style="width: 200px;" alt="user" id="dashboard">
-            <div class="d-flex flex-wrap mt-4">
-                <h3 class="orange ml-3 mr-2" style="border-bottom: 2px solid;"><?=strtoupper($this->session->pseudo)?> (compte : public)</h3>
-                <h5 class="mt-2"><a href="<? echo base_url('user/mod_infos')?>" style="color: blue;">Modifier</a></h5>
+                   
+            <div class="d-flex flex-wrap justify-content-center mt-4">
+                <span class="white"><i class="fas fa-user-astronaut fa-2x"></i></span>
+                <h3 class="orange mx-2"><?=strtoupper($this->session->pseudo)?> (compte : <?=$user->profil?>)</h3>
+                <h5 class="mt-2"><a href="<? echo base_url('user/mod_infos')?>" class="text-primary" >Modifier</a></h5>
             </div>
-        </div>
+        
         
         <div class="row">
             <div class="col-md-12 col-sm-12 col-12">
@@ -34,14 +34,15 @@
             <div class="col-md-6 col-sm-6 col-12">
                 <div class="d-flex justify-content-end">
                     <div class="mr-4 text-right">
-                        <div class="mb-5">
-                            <a class="btn btn-success" href="<? echo base_url('user/aff_collection/jet')?>">En images</a>
-                            <a class="btn btn-info" href="<? echo base_url('user/mod_collection/jet')?>">Mettre à jour</a>
+                        <div class="mb-4">
+                            <a class="btn btn-success mb-1" href="<? echo base_url('user/aff_collection/jet')?>">En images</a>
+                            <a class="btn btn-info mb-1" href="<? echo base_url('user/mod_collection/jet')?>">Mettre à jour</a>
                         </div>
-                        <h6>Vous détenez <?=$collection->jetCount?> <?= ($collection->jetCount > 1) ? 'maquettes' : 'maquette';?></h6>
-                        <h6 class="mb-3">ainsi que <?=$collection->jetDoubleCount?> <?= ($collection->jetDoubleCount > 1) ? 'doubles' : 'double';?></h6>
+                        <h6>Votre collection :</h6>
+                        <h6><?=$collection->jetCount?> <?= ($collection->jetCount > 1) ? 'maquettes, ' : 'maquette, ';?>
+                        <?=$collection->jetDoubleCount?> <?= ($collection->jetDoubleCount > 1) ? 'doubles' : 'double';?></h6>
                         <? $jetMiss = 73 - $collection->jetCount ?>
-                        <h6 class="orange"><?=$jetMiss?> <?= ($jetMiss > 1) ? 'maquettes vous manquent' : 'maquette vous manque';?></h6> 
+                        <h6 class="orange"><?=$jetMiss?> <?= ($jetMiss > 1) ? 'maquettes manquantes' : 'maquette manquante';?></h6> 
                     </div>
                     <div class="mb-3">
                         <img src="<? echo base_url().'assets/img/poster-jet.jpg'?>" alt="a reaction">
@@ -54,14 +55,15 @@
                         <img src="<? echo base_url().'assets/img/poster-ww2.jpg'?>" alt="2nde guerre mondiale">
                     </div>
                     <div class="ml-4 mb-5 text-left">
-                        <div class="mb-5">
-                            <a class="btn btn-info" href="<? echo base_url('user/mod_collection/ww2')?>">Mettre à jour</a>
-                            <a class="btn btn-success" href="<? echo base_url('user/aff_collection/ww2')?>">En images</a>
+                        <div class="mb-4">
+                            <a class="btn btn-info mb-1" href="<? echo base_url('user/mod_collection/ww2')?>">Mettre à jour</a>
+                            <a class="btn btn-success mb-1" href="<? echo base_url('user/aff_collection/ww2')?>">En images</a>
                         </div>
-                        <h6>Vous détenez <?=$collection->ww2Count?> <?= ($collection->ww2Count > 1) ? 'maquettes' : 'maquette';?></h6>
-                        <h6 class="mb-3">ainsi que <?=$collection->ww2DoubleCount?> <?= ($collection->ww2DoubleCount > 1) ? 'doubles' : 'double';?></h6>
+                        <h6>Votre collection :</h6>
+                        <h6><?=$collection->ww2Count?> <?= ($collection->ww2Count > 1) ? 'maquettes, ' : 'maquette, ';?>
+                        <?=$collection->ww2DoubleCount?> <?= ($collection->ww2DoubleCount > 1) ? 'doubles' : 'double';?></h6>
                         <? $ww2Miss = 60 - $collection->ww2Count ?>
-                        <h6 class="orange"><?=$ww2Miss?> <?= ($ww2Miss > 1) ? 'maquettes vous manquent' : 'maquette vous manque';?></h6> 
+                        <h6 class="orange"><?=$ww2Miss?> <?= ($ww2Miss > 1) ? 'maquettes manquantes' : 'maquette manquante';?></h6> 
                     </div>
                 </div>
             </div>
@@ -76,7 +78,7 @@
         
         <? foreach($annonces as $annonce){?>
             <div class="mt-3">
-                <div class="row">
+                <div class="row d-flex">
                     <?if($annonce->photo != ""){?>
                         <div class="mx-3">
                             <a href="<? echo base_url().'uploads/'.$annonce->photo?>" target="_blank"><img src="<? echo base_url().'uploads/'.$annonce->photo?>" style="width: 150px;" alt="photo"></a>
@@ -86,10 +88,10 @@
                             <h6 class="mt-5 text-center">Photo non fournie</h6>
                         </div>
                     <?}?>
-                    <div class="col-md-9 col-sm-9 col-12">
+                    <div class="col-lg-9 col-12">
                         <div class="d-flex my-1">
-                            <input class="form-control col-2" type="text" placeholder="<?=$annonce->deal?>" readonly>
-                            <input class="form-control col-8" type="text" placeholder="<?=sprintf("%02d", $annonce->model_id)?> _ <?=$annonce->builder_name?> <?=$annonce->model_name?>" readonly>
+                            <input class="form-control" type="text" placeholder="<?=$annonce->deal?>" readonly>
+                            <input class="form-control col-lg-8 col-6" type="text" placeholder="<?=sprintf("%02d", $annonce->model_id)?> _ <?=$annonce->builder_name?> <?=$annonce->model_name?>" readonly>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fas fa-euro-sign"></i></div>
@@ -141,7 +143,7 @@
 
         <? foreach($favorites as $favorite){ ?>
             <div class="mt-3">
-                <div class="row">
+                <div class="row d-flex">
                     <?if($favorite->photo != ""){?>
                         <div class="mx-3">
                             <a href="<? echo base_url().'uploads/'.$favorite->photo?>" target="_blank"><img src="<? echo base_url().'uploads/'.$favorite->photo?>" style="width: 150px;" alt="photo"></a>
@@ -151,7 +153,7 @@
                             <h6 class="mt-5 text-center">Photo non fournie</h6>
                         </div>
                     <?}?>
-                    <div class="col-md-9 col-sm-9 col-12">
+                    <div class="col-lg-9 col-12">
                         <div class="d-flex my-1">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -159,7 +161,7 @@
                                 </div>
                                 <input class="form-control" type="text" placeholder="<?= (isset($favorite->dept)) ? $favorite->dept : 'NC'?>" readonly >
                             </div>
-                            <input class="form-control col-8" type="text" placeholder="<?= (isset($favorite->location)) ? $favorite->location : 'NC'?>" readonly>
+                            <input class="form-control col-lg-8 col-6" type="text" placeholder="<?= (isset($favorite->location)) ? $favorite->location : 'NC'?>" readonly>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fas fa-euro-sign"></i></div>
@@ -176,7 +178,7 @@
 
                         <div class="d-flex justify-content-end mb-3">
                             <a class="btn btn-info mr-1" data-toggle="modal" data-target="#detailModal-<?=$favorite->id?>">Contacter</a>
-                            <a class="btn btn-success" href="<? echo base_url('bourse/del_favoris/'.$favorite->id)?>">Retirer des favoris</a>
+                            <a class="btn btn-success" href="<? echo base_url('bourse/del_favoris_site/'.$favorite->id)?>">Retirer des favoris</a>
                         </div>
 
                         <!-- Fenetre modal détail favorite, data-target personnalisé -->
@@ -221,8 +223,4 @@
     </div>
 </div>
 <?}?>
-
-<script>
-$('#dashboard').addClass('on');
-</script>
 

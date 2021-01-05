@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?=$title?></title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<? echo base_url().'assets/img/favicon.png'?>">
+    <title><?="AVIONS + Maquettes | ".$title?></title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,9 +25,9 @@
 <body>
     <header class="entete">
         <div class="container">
-            <div class="flex-between">
+            <div class="d-flex flex-wrap justify-content-between">
                 <div class="logo">
-                    <strong>AVIONS <i class="fas fa-plus-circle"></i><span> Maquettes</span></strong>
+                    <strong class="orange">AVIONS <i class="fas fa-plus-circle white"></i><span class="orange"> Maquettes</span></strong>
                 </div>
                 
                 <? require_once (APPPATH."views/partials/nav_$title.php");?>

@@ -24,78 +24,8 @@ class Bourse extends CI_Controller
 		$this->session->dist = (isset($this->session->dist)) ? $this->session->dist : '100';
 		$this->session->req_perso = (isset($this->session->req_perso)) ? $this->session->req_perso : 'Votre requête';
 
-		$this->layout->set_title('Bourse');
+		$this->layout->set_title('bourse');
 		$this->layout->view('bourse/home', $data);
-	}
-
-	/* RESULTATS REQUETE ANNONCES SITE */
-
-	function search_site()
-	{
-		if ($this->form_validation->run() == FALSE){
-			$this->index();
-			$error = $this->session->set_flashdata('error', validation_errors());
-			echo $error;
-
-		} else {
-
-			$data['members'] = $this->User_Model->getUsers();
-
-			// Récup choix
-			$loc_site = $this->input->post('loc_site');  // sélection distance max ou pas
-			$dept = $this->input->post('dept');  // distance en km
-			$collection = $this->input->post('collection');
-			$model = $this->input->post('model');
-			$req_model = $this->input->post('req_model');
-
-			// Set session attribut pour conservation choix
-			$this->session->loc_site = $loc_site;
-			$this->session->dept = $dept;
-			$this->session->model = $model;
-			
-			// Select tous modeles / collection / France entière
-			if($loc_site == 'fra' && $model == 'all'){
-				$data['annonces'] = $this->Bourse_Model->getCollectionAds($collection);
-			}
-
-			// Select tous modeles / collection / Departement
-			if($loc_site == 'dept' && $model == 'all'){
-				$data['annonces'] = $this->Bourse_Model->getCollectionAdsByDept($collection,$dept);
-			}
-
-			// Select un modele / collection / France entière
-			if($loc_site == 'fra' && $model != 'all'){
-				$data['annonces'] = $this->Bourse_Model->getModelAds($req_model);
-			}
-
-			// Select un modele / collection / Departement
-			if($loc_site == 'dept' && $model != 'all'){
-				$data['annonces'] = $this->Bourse_Model->getModelAdsByDept($req_model,$dept);
-			}
-
-			// Compte nb annonces trouvées
-			$data['annonces'] = (isset($data['annonces'])) ? $data['annonces'] : [];
-			$count = 0; foreach($data['annonces'] as $annonce){ $count++;}
-			$data['count'] = $count;
-			
-			// Ajout model_name + builder_name dans $data['annonces']
-			if($count != 0){
-				$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
-
-				foreach($data['annonces'] as $annonce){
-					foreach($data['jet_data'] as $jet){
-						if($annonce->model_id == $jet->id){
-							$annonce->model_name = $jet->model;
-							$annonce->builder_name = $jet->builder_name;
-						}
-					}
-				}
-			}
-
-			$this->session->data = $data;
-			$this->layout->set_title('Bourse');
-			$this->layout->view('bourse/search_site',$data);
-		}
 	}
 
 	/* RESULTATS REQUETE ANNONCES EBAY */
@@ -160,32 +90,144 @@ class Bourse extends CI_Controller
 			$ebay_result = json_decode($json);
 
 			// Mise en place data pour vue
-			$root = $ebay_result->findItemsByKeywordsResponse[0]->searchResult[0];
-			$data['item'] = (isset($root->item)) ? $root->item : '';
-			$data['count'] = (isset($root->item)) ? count($data['item']) : 0;
+			$root = $ebay_result->findItemsByKeywordsResponse[0];
+			$ebayStatus = $root->ack[0];
 
-			$this->layout->set_title('Bourse');
+			if($ebayStatus != 'Success'){
+				$data['ebayMsg'] = $root->errorMessage[0]->error[0]->message[0];
+				$data['count'] = 0;
+			} else {
+				$ebayItem = $root->searchResult[0];
+				$data['item'] = (isset($ebayItem->item)) ? $ebayItem->item : '';
+				$data['count'] = count($data['item']);
+			}
+
+			$this->layout->set_title('bourse');
 			$this->layout->view('bourse/search_ebay',$data);
 		}
 	}
-	
+
+	/* RESULTATS REQUETE ANNONCES SITE */
+
+	function search_site()
+	{
+		if ($this->form_validation->run() == FALSE){
+			$this->index();
+			$error = $this->session->set_flashdata('error', validation_errors());
+			echo $error;
+
+		} else {
+
+			$data['members'] = $this->User_Model->getUsers();
+			$data['favorites'] = $this->Bourse_Model->checkFavoris($this->session->id);
+
+			// Récup choix
+			$loc_site = $this->input->post('loc_site');  // sélection distance max ou pas
+			$dept = $this->input->post('dept');  // distance en km
+			$collection = $this->input->post('collection');
+			$model = $this->input->post('model');
+			$req_model = $this->input->post('req_model');
+
+			// Set session attribut pour conservation choix
+			$this->session->loc_site = $loc_site;
+			$this->session->dept = $dept;
+			$this->session->model = $model;
+			
+			// Select tous modeles / collection / France entière
+			if($loc_site == 'fra' && $model == 'all'){
+				$data['annonces'] = $this->Bourse_Model->getCollectionAds($collection);
+			}
+
+			// Select tous modeles / collection / Departement
+			if($loc_site == 'dept' && $model == 'all'){
+				$data['annonces'] = $this->Bourse_Model->getCollectionAdsByDept($collection,$dept);
+			}
+
+			// Select un modele / collection / France entière
+			if($loc_site == 'fra' && $model != 'all'){
+				$data['annonces'] = $this->Bourse_Model->getModelAds($req_model);
+			}
+
+			// Select un modele / collection / Departement
+			if($loc_site == 'dept' && $model != 'all'){
+				$data['annonces'] = $this->Bourse_Model->getModelAdsByDept($req_model,$dept);
+			}
+
+			// Compte nb annonces trouvées
+			$data['annonces'] = (isset($data['annonces'])) ? $data['annonces'] : [];
+			$count = 0; foreach($data['annonces'] as $annonce){ $count++;}
+			$data['count'] = $count;
+			
+			// Ajout model_name + builder_name dans $data['annonces']
+			if($count != 0){
+				$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
+
+				foreach($data['annonces'] as $annonce){
+					foreach($data['jet_data'] as $jet){
+						if($annonce->model_id == $jet->id){
+							$annonce->model_name = $jet->model;
+							$annonce->builder_name = $jet->builder_name;
+						}
+					}
+				}
+			}
+
+			// Check si annonces classées ou non en favoris
+			foreach($data['annonces'] as $annonce){
+				foreach($data['favorites'] as $favorite){
+					if($favorite->ad_id == $annonce->id){
+						$annonce->favoris = 1;
+						break;
+					} else {
+						$annonce->favoris = 0;
+					}
+				}
+			}
+
+			$this->session->annonces = $data['annonces'];
+			$this->session->count = $data['count'];
+			$this->layout->set_title('bourse');
+			$this->layout->view('bourse/search_site',$data);
+		}
+	}
+
 	/* ANNONCES FAVORITES */
 
 	function add_favoris_site($adId)
 	{
-		$data = array('favoris' => 'site');
-		$this->MY_Model->modif('annonces', $adId, $data);
+		// stocke information dans table favoris
+		$addFav = array(
+			'user_id' => $this->session->id,
+			'ad_id' => $adId
+		);
+		$this->MY_Model->add('favoris', $addFav);
 
-		$this->layout->set_title('Bourse');
-		$this->layout->view('bourse/search_site',$this->session->data);
+		// mise à jour affichage, btn favoris passe de rouge à vert
+		$data['annonces'] = $this->session->annonces;
+		$data['count'] = $this->session->count;
+		$data['favorites'] = $this->Bourse_Model->checkFavoris($this->session->id);
+
+		foreach($data['annonces'] as $annonce){
+			foreach($data['favorites'] as $favorite){
+				if($favorite->ad_id == $annonce->id){
+					$annonce->favoris = 1;
+					break;
+				} else {
+					$annonce->favoris = 0;
+				}
+			}
+		}
+
+		$this->session->annonces = $data['annonces'];
+		$this->layout->set_title('bourse');
+		$this->layout->view('bourse/search_site',$data);
 	}
 
 	// function add_favoris_ebay() TODO : ajout favoris ebay
 
-	function del_favoris($adId)
+	function del_favoris_site($adId)
 	{
-		$data = array('favoris' => '0');
-		$this->MY_Model->modif('annonces', $adId, $data);
+		$this->Bourse_Model->delFavoris($adId);
 		redirect('user');
 	}
 }

@@ -15,10 +15,12 @@
             </div>
                 
             <?= form_open_multipart('upload/do_upload');?>
-                <div class="col-md-6 col-sm-6 col-12 d-flex mt-3">
-                    <input class="btn btn-info" type='file' name='userfile' size='20' />
-                    <input class="btn btn-info ml-1" type='submit' name='submit' value='upload' />
-                    <a class="btn btn-success ml-1 pt-2" href="<? echo base_url('user/add_annonce')?>">Retour</a>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <input class="btn btn-info ml-1 mt-3" type='file' name='userfile' size='20' />
+                    <div class="d-flex mt-2">
+                        <input class="btn btn-info ml-1" type='submit' name='submit' value='upload' />
+                        <a class="btn btn-success ml-1 pt-2" href="<? echo base_url('user/add_annonce')?>">Retour</a>
+                    </div>
                 </div>
             </form>
         </div>  

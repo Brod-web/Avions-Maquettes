@@ -81,18 +81,8 @@ class Jet_Model extends MY_Model {
         $query = $this->db->query
         ("SELECT jet_fighters.id, copy_id, model, builder_id, pilot, engine, $field, builders.name as builder_name
         FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id AND copy_id IS NULL
-        ORDER BY $field DESC");
-        /*LIMIT 6"); Dans le cas ou on affichait seulement premiers résultats */
+        ORDER BY $field DESC"); // ASC pour ordre inversé
+        /*LIMIT 6"); Dans le cas ou on afficherait seulement premiers résultats */
         return $query->result();
     }
-
-    /*public function getLast_items($field) // Plus utilisé
-	{
-        $query = $this->db->query
-        ("SELECT jet_fighters.id, copy_id, model, builder_id, $field, builders.name as builder_name
-        FROM jet_fighters, builders WHERE jet_fighters.builder_id = builders.id AND copy_id IS NULL
-        ORDER BY $field ASC
-        LIMIT 6");
-        return $query->result();
-    }*/
 }

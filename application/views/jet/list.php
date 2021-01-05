@@ -1,6 +1,6 @@
 <div class="fond-color3">
     <div class="container">
-        <table class="table table-hover mt-4">
+        <table class="table table-responsive mt-4">
             <thead class="thead-light">
                 <tr class="text-center">
                     <th>N°</th>

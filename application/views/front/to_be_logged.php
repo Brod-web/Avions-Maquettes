@@ -1,7 +1,7 @@
 <div class="fond-reaction">
     <div class="fond-color1">
         <div class="container">
-            <h2>2 univers et 1 lieu d'échange entre collectionneurs.</h2>
+            <h2 class="white">2 univers et 1 lieu d'échange entre collectionneurs.</h2>
         </div>
     </div>
 </div>

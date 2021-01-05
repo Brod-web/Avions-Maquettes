@@ -24,7 +24,7 @@ class User extends CI_Controller
 		$data['collection'] = $this->User_Model->getCollection($userId);
 		$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
 		$data['annonces'] = $this->Bourse_Model->getUserAds($userId);
-		$data['favorites'] = $this->Bourse_Model->getFavorisAds();
+		$data['favorites'] = $this->Bourse_Model->getFavorisAds($userId);
 		$data['members'] = $this->User_Model->getUsers();
 
 		// Ajout model_name + builder_name dans $data['annonces']
@@ -47,7 +47,7 @@ class User extends CI_Controller
 			}
 		}
 
-		$this->layout->set_title('Dashboard');
+		$this->layout->set_title('dashboard');
 		$this->layout->view('user/dashboard',$data);
 	}
 
@@ -60,7 +60,7 @@ class User extends CI_Controller
 		$data['collection'] = $this->User_Model->getCollection($userId);
 
 		if ($this->form_validation->run() == FALSE){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view('user/mod_infos',$data);
 
 			$error = $this->session->set_flashdata('error', validation_errors());
@@ -114,7 +114,7 @@ class User extends CI_Controller
 		$data['collection'] = $this->User_Model->getCollection($userId);
 
 		if ($this->form_validation->run() == FALSE){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view("user/mod_".$collectionName."_collection",$data);
 
 			$error = $this->session->set_flashdata('error', validation_errors());
@@ -145,7 +145,7 @@ class User extends CI_Controller
 		$data['collection'] = $this->User_Model->getCollection($userId);
 		
 		if ($this->form_validation->run() == FALSE){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view("user/mod_".$collectionName."_collection",$data);
 			
 			$error = $this->session->set_flashdata('error', validation_errors());
@@ -173,7 +173,7 @@ class User extends CI_Controller
 		$data['collection'] = $this->User_Model->getCollection($userId);
 		
 		if ($this->form_validation->run() == FALSE){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view("user/mod_".$collectionName."_collection",$data);
 			
 			$error = $this->session->set_flashdata('error', validation_errors());
@@ -222,7 +222,7 @@ class User extends CI_Controller
 		$have = ($collectionName == "jet") ? 'jet_have' : 'ww2_have';
 		$data['have'] = str_split($data['collection']->$have);
 		
-		$this->layout->set_title('Jet');
+		$this->layout->set_title('jet');
 		$this->layout->view('user/'.$collectionName.'_collection',$data);
 	}
 
@@ -235,7 +235,7 @@ class User extends CI_Controller
 		$data['jet_data'] = $this->Jet_Model->getJetsAndBuilders();
 		
 		if ($this->form_validation->run() == FALSE){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view("user/add_annonce",$data);
 			$error = $this->session->set_flashdata('error', validation_errors());
 			echo $error;
@@ -275,7 +275,7 @@ class User extends CI_Controller
 			}
 		
 		if ($this->form_validation->run() == FALSE ){
-			$this->layout->set_title('Dashboard');
+			$this->layout->set_title('dashboard');
 			$this->layout->view('user/mod_annonce',$data);
 
 			$error = $this->session->set_flashdata('error', validation_errors());

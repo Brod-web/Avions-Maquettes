@@ -40,7 +40,7 @@ class Signin extends CI_Controller {
 
 			//Envoi mail pour validation inscription
 			$this->load->library('email');
-			$this->email->from('brod-web@alwaysdata.net', 'No-Reply');
+			$this->email->from(MAIL_FROM, 'No-Reply');
 			$this->email->to($email);
 			$this->email->subject('Création de votre compte AVIONS+Maquettes');
 

@@ -63,11 +63,27 @@ class Bourse_Model extends MY_Model {
 
     /* GET ANNONCES FAVORITES */
 
-    public function getFavorisAds()
+    public function getFavorisAds($userId)
 	{
-        $this->db->from('annonces');
-        $this->db->where('favoris', 'site');
+        $query = $this->db->query
+        ("SELECT *
+        FROM favoris, annonces WHERE favoris.user_id = $userId AND annonces.id = favoris.ad_id");
+        return $query->result();
+    }
+
+    public function checkFavoris($userId)
+	{
+        $this->db->from('favoris');
+        $this->db->where('user_id', $userId);
         $query = $this->db->get();
         return $query->result();
+    }
+
+    public function delFavoris($adId)
+	{
+        $this->db->from('favoris');
+        $this->db->where('user_id', $this->session->id);
+        $this->db->where('ad_id', $adId);
+        return $this->db->delete();
     }
 }

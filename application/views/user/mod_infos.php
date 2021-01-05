@@ -137,14 +137,14 @@
 
         <div class="row d-flex justify-content-between">
             <div class="col-md-6 col-sm-12 col-12">
+                <!-- Affichage erreurs formulaire -->
+                <? echo validation_errors(); ?>
                 <!-- Message accueil -->
                 <div class="alert alert-info text-center" role="alert">
                     <?$msg = "<strong>Public</strong> : créez vos annonces, participez à des échanges entre membres</br>
                     <strong>Privé</strong> : les autres membres ne voient pas vos collections";
                     echo $msg;?>
                 </div>
-                <!-- Affichage erreurs formulaire -->
-                <? echo validation_errors(); ?>
             </div>
             <div class="d-flex">
                 <div>

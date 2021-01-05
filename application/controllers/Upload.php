@@ -8,7 +8,7 @@ class Upload extends CI_Controller {
 
     public function upload_view()
     {
-        $this->layout->set_title('Dashboard');
+        $this->layout->set_title('dashboard');
         $this->layout->view('upload_view', array('error' => ' ' ));
     }
 
@@ -51,7 +51,7 @@ class Upload extends CI_Controller {
             
         } else {
             $error = array('error' => $this->upload->display_errors());
-            $this->layout->set_title('Dashboard');
+            $this->layout->set_title('dashboard');
             $this->layout->view('upload_view', $error);
         }
     }

@@ -1,10 +1,10 @@
 <?if(isset($this->session->id)){?>
 <div class="fond-color3" style="min-height: 535px;">
     <div class="container">
-        <h3 class="orange text-center mt-5 mb-3">Publiez votre annonce :</h3>
+        <h3 class="orange text-center my-4">Publiez votre annonce :</h3>
         <div>
             <div class="row">
-                <div class="text-center">
+                <div class="text-center pt-4">
                     <?if(isset($this->session->photo)){?>
                         <div class="mx-3">
                             <img src="<? echo base_url().'uploads/'.$this->session->photo?>" width="150px" alt="photo">
@@ -22,8 +22,9 @@
                 <div class="col-md-9 col-sm-9 col-12">
                     <?=form_open('user/add_annonce')?>
                     <? $dept = substr($user->CP,0,2) ?>
-                    <input class="form-control mb-1" type="text" placeholder="votre localisation : département <?=$dept?> | <?=$user->ville?>,<?=$user->pays?>" readonly>
-                    <div class="d-flex">
+                    <h3>Votre Localisation : dépt. | ville, pays :</h3>
+                    <input class="form-control mb-3" type="text" placeholder="<?=$dept?> | <?=$user->ville?>,<?=$user->pays?>" readonly>
+                    <div class="d-flex mb-3">
                         <select class="custom-select col-3" name="deal">
                             <option value="A vendre" selected>A vendre</option>
                             <option value="Recherche">Recherche</option>

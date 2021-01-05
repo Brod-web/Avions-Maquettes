@@ -1,129 +1,17 @@
-/* layout */
-.fond-dashboard{
-    background-image: url(../assets/img/fond2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 680px;
-
-}
-
-.fond-grey{
-    background: rgba(148, 156, 156, 0.4);
-}
-
-.siteName{
-    font-family: 'Leckerli One', cursive;
-    font-size: 35px;
-}
+/* ------- COULEURS & FONDS ------- */
 
 .white{
-    color: white;
+    color: #ffffff;
 }
 
 .orange{
-    color: #ff6900;
+    /*color: #ff6900; pour mémoire (couleur initiale)*/
+    color: #ff5120;
 }
 
 .black{
     color: black;
 }
- 
-li{
-    list-style-type: none;
-}
-
-.card-img{
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
-
-/* GLOBAL */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-img {
-    max-width: 100%;
-    vertical-align: middle;
-    height: auto;
-}
-
-iframe {
-    max-width: 100%;
-    display: block;
-}
-
-nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #8ebdd6;
-}
-
-figure {
-    margin: 0;
-}
-
-/* TEXTES */
-
-body{
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: -1px;
-    color: #ffffff;
-}
-
-h1{
-    font-size: 40px;
-    font-weight: 700;
-    margin: 0 auto;
-}
-
-h2{
-    font-size: 25px;
-    font-weight: 500;
-}
-
-h3{
-    font-size: 20px;
-    font-weight: 500;
-    margin: 0 auto;
-    padding-top: 10px;
-}
-
-h4{
-    font-size: 16px;
-    font-weight: 500;
-    margin: 20px 20px 1px 20px;
-}
-
-body h5{
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0;
-    padding-top: 5px;
-}
-
-body p{
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 0;
-    margin: 0;
-}
-
-/* HEADER */
 
 .entete{
     background-color: #093347;
@@ -163,34 +51,23 @@ body p{
     border-top: 2px solid #ffffff;
 }
 
-.flex{
-    display: flex;
-    flex-wrap: wrap;
+/* ------- FOOTER ------- */
+
+.fond-footer{
+    background-color: rgba(13, 80, 80, 0.4);
+    /*background-color:#f7f7f7;*/
+    min-height: 50px;
+    /*border-top: 2px solid #ffffff;*/
+
 }
 
-.flex-around{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.fond-footer p{
+    color: #ff5120;
+    text-align: right;
+    padding-top: 15px;
 }
 
-.flex-between{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.flex-end{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-}
-
-.flex-center{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+/* ------- HEADER ------- */
 
 .logo{
     padding-top: 8px;
@@ -200,76 +77,33 @@ body p{
 .logo strong{
     font-size: 25px;
     font-weight: 700;
-    color: #ff6900;
 }
 
 .logo span{
     font-family: 'Patrick Hand SC', cursive;
     font-size: 30px;
-    color: #ff6900;
 }
 
 .logo i{
     font-size: 25px;
+}
+
+/* MENUS - NAVIGATION */
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
     color: #ffffff;
 }
 
-.collec-logo{
-    border: 2px solid #ffffff;
-    margin-top: 5px;
-}
-
-.collec-logo:hover{
-    border: 2px solid rgba(244, 141, 74, 1);
-}
-
-.titre{
-    position: absolute;
-    top: 360px;
-}
-
-.bouton{
-    width: 120px;
-    height: 40px;
-    border: 2px solid #ffffff;
-    border-radius: 25px;
-    margin-top: 5px;
-    padding-top: 5px;
-    text-align: center;
-}
-
-.bouton h4{
-    margin: 4px;
-}
-
-.bouton:hover{
-    border: 2px solid #ff6900;
-    background-color: #1f4558;
-}
-
-.on{
-    border: 2px solid #ff6900;
-}
-
-.titre{
-    text-align: center;
-    color: #ffffff;
-}
-
-.ligne{
-    max-width: 480px;
-    min-height: 25px;
-    border-bottom: 1px solid #5a8ca7;
-    margin: 0 auto;
-}
-
-.legende{
-    max-width: 500px;
-    min-height: 10px;
-    color: #b4d1e1;
-    text-align: center;
-    text-overflow: inherit;
-    margin: 30px auto 0 auto;
+a:hover {
+    text-decoration: none;
+    color: #8ebdd6;
 }
 
 #menu ul{
@@ -298,67 +132,74 @@ body p{
 
 .dropdown-menu div:hover,
 .dropdown-menu li:hover{
-    border: 3px solid #ff6900;
+    border: 3px solid #ff5120;
+}
+
+.on{
+    border: 2px solid #ff5120;
 }
 
 #menu-mobile {
     display: none;
 }
 
-/* MAIN */
+/* ------- TEXTES ------- */
 
-.table{
-    margin-bottom: 0px;
+body{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -1px;
 }
+
+h1{
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 auto;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px 20px 1px 20px;
+}
+
+h5{
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    padding-top: 5px;
+}
+
+body p{
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* ------- LOGIN, SIGNIN ------- */
 
 .fascicule{
     width: 185px;
     border-radius: 5px;
     border: 2px solid #ffffff;
-    float: right;
+    /*float: right;*/
     transform: translateY(15px);
 }
 
 .fascicule:hover{
-    border: 4px solid #ff6900;
-}
-
-.fond-ciel{
-    background-image: url(..assets/img/fond-ciel.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 635px;
-
-}
-
-.fond-color4{
-    background-color: rgba(60, 120, 148, 0.65);
-    min-height: 635px;
-}
-
-.btn-style{
-    width: 500px;
-    height: 50px;
-    border: 2px solid;
-    border-radius: 25px;
-    margin: 10px auto 0 auto;
-    padding-top: 5px;
-    text-align: center;
-}
-
-.btn-style2{
-    width: 500px;
-    height: 140px;
-    border: 2px solid;
-    border-radius: 25px;
-    margin: 10px auto 0 auto;
-    padding-top: 55px;
-    text-align: center;
-}
-
-.contact .bouton{
-    padding-top: 4px;
-    margin-top: 10px;
+    border: 4px solid #ff5120;
 }
 
 button{
@@ -370,7 +211,7 @@ button{
 }
 
 #savoir q{
-    color: #ff6900;
+    color: #ff5120;
 }
 
 #savoir q>span{
@@ -387,23 +228,33 @@ button{
     text-align: justify;
 }
 
-/* ANNONCE */
+/* ------- JET or WW2/CARD ------- */
+/* image fascicule + maquette */
 
-.gabarit{
-    width: 150px;
-    height: 150px;
-    border: 2px solid white;
+.prev-next{
+    width: 120px;
+    height: 40px;
+    border: 2px solid #ffffff;
+    border-radius: 25px;
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: center;
 }
 
+.prev-next h4{
+    margin: 4px;
+}
 
-/* AVION-IMG */
+.prev-next:hover{
+    border: 2px solid #ff5120;
+    background-color: #1f4558;
+}
 
 #avion-img ul
 {
     width: 240px;
     height: 463px;
     padding-left: 0;
-    /*padding-top: 40px;*/
 }
 
 #avion-img ul li
@@ -456,7 +307,7 @@ button{
     background-position: -960px 0;
 }
 
-/* AVION-DIM */
+/* dimensions avion avec silouhette */
 
 .avion-dim
 {
@@ -472,13 +323,13 @@ button{
     text-align: center;
     margin-top: 60px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #ff6900;
+    border-bottom: 2px solid #ff5120;
     margin-left: 40px;
     margin-right: 40px;
-    border-left: 2px solid #ff6900;
+    border-left: 2px solid #ff5120;
 }
 
-.name{
+.jet-name{
     text-align: center;
     margin-top: 40px;
 }
@@ -500,7 +351,7 @@ button{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #ff6900;
+    background-color: #ff5120;
     color: white;
     font-size: 25px;
     text-align: center;
@@ -525,13 +376,12 @@ button{
     right: 113px;
 }
 
-/* AVION-CAR */
+/* données techniques avion */
 
 .avion-car
 {
     width: 520px;
     height: 463px;
-    /*margin-top: 40px;*/
     background-color: #093347;
     opacity: 0.8;
     position: relative;
@@ -556,7 +406,7 @@ button{
     left: 25px;
     z-index: -1;
     border-radius: 5px;
-    background-color: #ff6900;
+    background-color: #ff5120;
     color: white;
     font-size: 20px;
     text-align: right;
@@ -573,7 +423,7 @@ button{
     right: 100px;
 }
 
-/* AVION-LIST */
+/* ------- JET or WW2 COLLECTION ------- */
 
 .avion-list{
     position: relative;
@@ -598,7 +448,7 @@ button{
     width: 20%;
 }
 
-/* AVION-COLLECTION */
+/* ------- JET or WW2/LIST ------- */
 
 .collec{
     background-color: #093347;
@@ -606,39 +456,42 @@ button{
     padding: 7px 10px;
 }
 
-.avion-choice{
-    max-width: 950px;
-    /*padding-top: 10px;*/
-    /*padding-bottom: 10px;*/
+.table{
+    margin-bottom: 0px;
 }
 
-/* FOOTER */
+/* ------- BOURSE ------- */
+/* PHOTOS ANNONCES */
 
-.fond-footer{
-    background-color: rgba(13, 80, 80, 0.4);
-    /*background-color:#f7f7f7;*/
-    min-height: 50px;
-    /*border-top: 2px solid #ffffff;*/
-
+.gabarit{
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
 }
 
-.fond-footer p{
-    color: #ff6900;
-    text-align: right;
-    padding-top: 15px;
+/* ------- GLOBAL ------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-/* BOURSE */
-
-.bourse-card1{
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-    /*border: 2px dashed orange;*/
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
 }
 
-.bourse-card2{
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    /*border: 2px dashed orange;*/
+li{
+    list-style-type: none;
 }
 
+iframe {
+    max-width: 100%;
+    display: block;
+}
+
+figure {
+    margin: 0;
+}

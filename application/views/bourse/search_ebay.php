@@ -3,19 +3,23 @@
     <div class="container">
         <? if($count == 0){ ?>
             <div class="text-center pt-5">
-                <h2>Désolé, aucune annonce trouvée !<br></h2>
-                <h5 class="orange">Votre requête est limitée par une distance maximum, tentez d'augmenter celle-ci.</h5>
-                <h5 class="orange">Vous utilisez une requête personnalisée, tentez d'autres mots-clés.</h5>
+                <h2 class="white">Désolé, aucune annonce trouvée !<br></h2>
+                <? if(isset($ebayMsg)){?>
+                    <h5 class="orange"><?=$ebayMsg?></h5>
+                <?} else {?>
+                    <h5 class="orange">Votre requête est limitée par une distance maximum, tentez d'augmenter celle-ci.</h5>
+                    <h5 class="orange">Vous utilisez une requête personnalisée, tentez d'autres mots-clés.</h5>
+                <?}?>
             </div>
         <?} else {?>
             <div class="d-flex justify-content-center pt-3">
                 <h5><?=$count?><?=($count == 1) ? " annonce trouvée" : " annonces trouvées"?></h5>
                 <h5 class="mx-3">|</h5>
-                <h5><a href="<? echo base_url('bourse')?>" style="color: blue;">Lancer une autre requête</a></h5>
+                <h5><a href="<? echo base_url('bourse')?>" class="text-primary">Lancer une autre requête</a></h5>
             </div>
             <? for($i=0; $i < $count; $i++){ ?>
             <div class="mt-3">
-                <div class="row">
+                <div class="row d-flex">
                     <?if(isset($item[$i]->galleryPlusPictureURL[0])){?>
                         <div class="mx-3">
                             <img src="<?=$item[$i]->galleryPlusPictureURL[0]?>" style="width: 150px;" alt="photo"></a>
@@ -25,7 +29,7 @@
                             <h6 class="mt-5 text-center">Photo non fournie</h6>
                         </div>
                     <?}?>
-                    <div class="col-md-9 col-sm-9 col-12">
+                    <div class="col-lg-9 col-12">
                         <div class="d-flex my-1">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -37,7 +41,7 @@
                                     <input class="form-control" type="text" placeholder="NC" readonly >
                                 <?}?>
                             </div>
-                            <input class="form-control col-8" type="text" placeholder="<?= isset($item[$i]->location[0]) ? $item[$i]->location[0] : 'NC'?>" readonly>
+                            <input class="form-control col-lg-8 col-6" type="text" placeholder="<?= isset($item[$i]->location[0]) ? $item[$i]->location[0] : 'NC'?>" readonly>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fas fa-euro-sign"></i></div>
@@ -64,7 +68,7 @@
             <?}?>
         <?}?>
         <div class="text-center py-3">
-            <h5><a href="<? echo base_url('bourse')?>" style="color: blue;">Lancer une autre requête</a></h5>
+            <h5><a href="<? echo base_url('bourse')?>" class="text-primary">Lancer une autre requête</a></h5>
         </div>
     </div>
 </div>

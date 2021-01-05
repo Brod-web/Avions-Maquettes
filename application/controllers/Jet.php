@@ -31,7 +31,7 @@ class Jet extends CI_Controller
 
 		$this->fighter->add_flags_on_list($data); // Ajout drapeaux
 		
-		$this->layout->set_title('Jet');
+		$this->layout->set_title('jet');
 		$this->layout->view('jet/list',$data);
 	}
 
@@ -59,7 +59,7 @@ class Jet extends CI_Controller
 		$data['countries'] = $this->Jet_Model->getCountries();
 		$this->fighter->add_flags_on_card($data); // Ajout drapeaux
 		
-		$this->layout->set_title('Jet');
+		$this->layout->set_title('jet');
 		$this->layout->view('jet/card',$data);
 	}
 
@@ -81,7 +81,7 @@ class Jet extends CI_Controller
 		);
         $data['field'] = array($field, $possible[$field]);
         
-		$this->layout->set_title('Jet');
+		$this->layout->set_title('jet');
 		$this->layout->view('jet/sortBy',$data);
 	}
 }

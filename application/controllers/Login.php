@@ -89,7 +89,7 @@ class Login extends CI_Controller {
 	}
 
 	public function deconnexion(){
-		$array_items = array('id','pseudo','email','loc_site','loc_ebay','dept','dist','model','req','req_perso','data');
+		$array_items = array('id','pseudo','email','loc_site','loc_ebay','dept','dist','model','req','req_perso','annonces','count');
 		$this->session->unset_userdata($array_items);
 		session_destroy();
 		redirect('login');

@@ -1,7 +1,7 @@
 <?if(isset($this->session->id)){?>
 <div class="fond-color3">
     <div class="container">
-        <h2 class="text-center">Bourse des collectionneurs<br></h2>
+        <h2 class="text-center white">Bourse des collectionneurs<br></h2>
         <h5 class="orange text-center">Ils vous manquent quelques modèles ... Trouvez les sur AVIONS + Maquettes ou chez notre partenaire Ebay.</h5>
         <div class="col-md-6 col-sm-6 col-12">
             <? echo validation_errors(); ?>

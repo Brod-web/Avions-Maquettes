@@ -93,22 +93,4 @@ class User_Model extends MY_Model {
         $this->db->where('user_id', $userid);
         return $this->db->update('collection', $data);
     }
-
-    /* Fonction génériques ajoutées à MY_Model
-    public function addUser($data)
-    {
-        return $this->db->insert('user', $data);
-    }
-
-    public function modifUser($userId, $data)
-    {
-        $this->db->where('id', $userId);
-        return $this->db->update('user', $data);
-    }
-
-    public function delUser($userId)
-    {
-        return $this->db->delete('user', $userId);
-    }
-    */
 }

@@ -3,10 +3,10 @@
         <div class="d-flex justify-content-center flex-wrap">
             <section class="container mt-1 mb-3" style="max-width: 700px;">
                 <div class="d-flex justify-content-between">
-                    <div class="bouton">
+                    <div class="prev-next">
                         <a href="<? echo base_url('jet/card/'.(($jet->id > 1) ? $jet->id-1 : $jet->id = 73))?>"><h4><i class="fas fa-chevron-left"></i>  Précédent</h4></a>
                     </div>
-                    <div class="bouton">
+                    <div class="prev-next">
                         <a href="<? echo base_url('jet/card/'.(($jet->id < 73) ? $jet->id+1 : $jet->id = 1))?>"><h4><i class="fas fa-chevron-right"></i>  Suivant</h4></a>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <div class="silouhette">
                         <img src=<? echo base_url().'assets/img/silouhette.png'?> alt="silouhette" width="150px">
                     </div>
-                    <div class="name">
+                    <div class="jet-name">
                         <h3><?=$builder->name?></h3>
                         <h2><?=$jet->model?></h2>
                     </div>

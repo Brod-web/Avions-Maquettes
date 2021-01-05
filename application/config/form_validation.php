@@ -75,7 +75,7 @@ $config = array(
         array(
             'field' => 'phone',
             'label' => 'Phone',
-            'rules' => 'trim|required'
+            'rules' => 'trim|numeric|min_length[10]|max_length[10]|required'
         ),
         array(
             'field' => 'pays',
@@ -90,7 +90,7 @@ $config = array(
         array(
             'field' => 'CP',
             'label' => 'CP',
-            'rules' => 'trim|required'
+            'rules' => 'trim|numeric|min_length[5]|max_length[5]|required'
         ),
         array(
             'field' => 'ville',
@@ -154,7 +154,7 @@ $config = array(
         array(
             'field' => 'price',
             'label' => 'Price',
-            'rules' => 'trim|required|numeric'
+            'rules' => 'trim|numeric|max_length[3]|required'
         ),
         array(
             'field' => 'text',
@@ -167,7 +167,7 @@ $config = array(
         array(
             'field' => 'price',
             'label' => 'Price',
-            'rules' => 'trim|required|numeric'
+            'rules' => 'trim|numeric|max_length[3]|required'
         ),
         array(
             'field' => 'text',
@@ -180,7 +180,7 @@ $config = array(
         array(
             'field' => 'dept',
             'label' => 'Dept',
-            'rules' => 'trim|numeric'
+            'rules' => 'trim|max_length[2]|numeric'
         )
     ),
 
@@ -188,7 +188,7 @@ $config = array(
         array(
             'field' => 'dist',
             'label' => 'Dist',
-            'rules' => 'trim|numeric'
+            'rules' => 'trim|max_length[4]|numeric'
         )
     ),
 );
