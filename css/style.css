@@ -17,7 +17,6 @@
     background-color: #093347;
     min-height: 70px;
     border-bottom: 2px solid #ffffff;
-    position: relative;
 }
 
 .fond-reaction{
@@ -172,6 +171,7 @@ h4{
     font-size: 16px;
     font-weight: 500;
     margin: 20px 20px 1px 20px;
+    color: #ffffff;
 }
 
 h5{
@@ -194,7 +194,6 @@ body p{
     width: 185px;
     border-radius: 5px;
     border: 2px solid #ffffff;
-    /*float: right;*/
     transform: translateY(15px);
 }
 
@@ -219,10 +218,6 @@ button{
     /*font-size: 30px;*/
 }
 
-#savoir h2{
-    margin-top: 40px;
-}
-
 #savoir h3{
     margin-top: 20px;
     text-align: justify;
@@ -230,6 +225,10 @@ button{
 
 /* ------- JET or WW2/CARD ------- */
 /* image fascicule + maquette */
+
+#avion-card{
+    overflow-x: hidden;
+}
 
 .prev-next{
     width: 120px;

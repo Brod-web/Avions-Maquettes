@@ -40,9 +40,9 @@
                     <label class="form-check-label" for="jet">Avions de combat à réaction</label>
                 </div>
                 
-                <div class="mt-2">
+                <div class="mt-3">
                     <div class="d-flex justify-content-end">
-                        <div class="input-group col-4">
+                        <div class="input-group col-lg-4 col-6">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">Dept.</div>
                             </div>
@@ -106,15 +106,14 @@
                     <label class="form-check-label" for="one">requête personnalisée (Ajoutez un + entre chaque mot)</label>
                 </div>
                         
-                <div class="d-flex mt-3">
-                    <input class="form-control col-8" type="text" name="req_perso" value="<?= $this->session->req_perso?>">
-                    
-                    <div class="input-group mb-1 col-4">
+                <div class="d-flex flex-wrap mt-3">
+                    <div class="input-group col-lg-4 col-6 mb-1">
                         <div class="input-group-prepend">
                             <div class="input-group-text">Km</div>
                         </div>
                         <input class="form-control" type="text" name="dist" value="<?=$this->session->dist?>">
                     </div>
+                    <input class="form-control col-lg-8 col-12" type="text" name="req_perso" value="<?= $this->session->req_perso?>">
                 </div>
                 <hr>
 

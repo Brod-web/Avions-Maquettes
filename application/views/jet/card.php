@@ -1,17 +1,26 @@
 <div class="fond-color3">
     <div class="container">
-        <div class="d-flex justify-content-center flex-wrap">
-            <section class="container mt-1 mb-3" style="max-width: 700px;">
-                <div class="d-flex justify-content-between">
-                    <div class="prev-next">
-                        <a href="<? echo base_url('jet/card/'.(($jet->id > 1) ? $jet->id-1 : $jet->id = 73))?>"><h4><i class="fas fa-chevron-left"></i>  Précédent</h4></a>
-                    </div>
-                    <div class="prev-next">
-                        <a href="<? echo base_url('jet/card/'.(($jet->id < 73) ? $jet->id+1 : $jet->id = 1))?>"><h4><i class="fas fa-chevron-right"></i>  Suivant</h4></a>
-                    </div>
+        <section class="container mt-1 mb-3" style="max-width: 540px;">
+            <div class="d-flex justify-content-between">
+                <div class="prev-next">
+                    <?if($jet->id != 1) {?>
+                        <a href="<? echo base_url('jet/card/'.($jet->id-1))?>"><h4><i class="fas fa-chevron-left"></i>  Précédent</h4></a>
+                    <?} else {?>
+                        <a href="<? echo base_url('jet/card/73')?>"><h4><i class="fas fa-chevron-left"></i>  Précédent</h4></a>
+                    <?}?>
                 </div>
-            </section>
-            <div class="d-flex">
+                <div class="prev-next">
+                    <?if($jet->id == 73) {?>
+                        <a href="<? echo base_url('jet/card/1')?>"><h4><i class="fas fa-chevron-right"></i>  Suivant</h4></a>
+                    <?} else {?> 
+                        <a href="<? echo base_url('jet/card/'.($jet->id+1))?>"><h4><i class="fas fa-chevron-right"></i>  Suivant</h4></a>
+                    <?}?>   
+                </div>
+            </div>
+        </section>
+        <div class="d-flex justify-content-center flex-wrap">
+            
+            <div class="d-flex" id="avion-card">
                 <section id="avion-img">
                     <ul>
                         <li>
@@ -26,7 +35,7 @@
                     <div class="silouhette">
                         <img src=<? echo base_url().'assets/img/silouhette.png'?> alt="silouhette" width="150px">
                     </div>
-                    <div class="jet-name">
+                    <div class="jet-name white">
                         <h3><?=$builder->name?></h3>
                         <h2><?=$jet->model?></h2>
                     </div>
@@ -156,7 +165,6 @@
                 </div>
             </section>
 
-            
         </div>
     </div>
 </div>

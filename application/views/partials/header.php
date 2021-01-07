@@ -26,7 +26,7 @@
     <header class="entete">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between">
-                <div class="logo">
+                <div class="logo text-center">
                     <strong class="orange">AVIONS <i class="fas fa-plus-circle white"></i><span class="orange"> Maquettes</span></strong>
                 </div>
                 
